@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Projects - Kirana Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon1.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <style>
+            .project-card {
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .project-card img {
+                transition: all 0.3s ease;
+                width: 100%;
+                height: 300px; /* Ukuran tetap untuk semua gambar */
+                object-fit: cover; /* Memastikan gambar tetap proporsional */
+            }
+            
+            .project-card:hover img {
+                transform: scale(1.1);
+            }
+            
+            .project-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .project-card:hover .project-overlay {
+                opacity: 1;
+            }
+            
+            .project-overlay-content {
+                color: white;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .project-overlay-content h5 {
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+            }
+            
+            .project-overlay-content p {
+                margin-bottom: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .project-overlay-content .btn {
+                background: white;
+                color: black;
+                border: none;
+                padding: 8px 20px;
+                border-radius: 20px;
+                transition: all 0.3s ease;
+            }
+            
+            .project-overlay-content .btn:hover {
+                background: #007bff;
+                color: white;
+            }
+            
+            /* Tambahan style untuk animasi scroll */
+            .section-title {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.6s ease;
+            }
+            
+            .section-title.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .nav-pills .nav-link {
+                transition: all 0.3s ease;
+            }
+            
+            .nav-pills .nav-link:hover {
+                transform: translateY(-2px);
+            }
+            
+            .nav-pills .nav-link.active {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Kirana Ramadhani Al Irham</span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5" data-aos="fade-down" data-aos-duration="1000">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+                    </div>
+                    
+                    <!-- Tab Navigation -->
+                    <ul class="nav nav-pills mb-4 justify-content-center" id="projectTabs" role="tablist" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab">Semua Proyek</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="web-tab" data-bs-toggle="pill" data-bs-target="#web" type="button" role="tab">Pengembangan Web</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="mobile-tab" data-bs-toggle="pill" data-bs-target="#mobile" type="button" role="tab">Aplikasi Mobile</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="design-tab" data-bs-toggle="pill" data-bs-target="#design" type="button" role="tab">Desain UI/UX</button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="projectTabsContent">
+                        <div class="tab-pane fade show active" id="all" role="tabpanel">
+                            <div class="row g-4" id="allProjects">
+                                <!-- Project cards will be dynamically added here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="web" role="tabpanel">
+                            <div class="row g-4" id="webProjects">
+                                <!-- Web project cards will be dynamically added here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="mobile" role="tabpanel">
+                            <div class="row g-4" id="mobileProjects">
+                                <!-- Mobile project cards will be dynamically added here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="design" role="tabpanel">
+                            <div class="row g-4" id="designProjects">
+                                <!-- Design project cards will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Project pagination" class="mt-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                        <ul class="pagination justify-content-center" id="projectPagination">
+                            <!-- Pagination will be dynamically added here -->
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+            <!-- Call to action section-->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h2 class="display-4 fw-bolder mb-4">Mari Kita Bangun Sesuatu Bersama</h2>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Hubungi Saya</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto">
+                        <img src="assets/UNM.png" alt="UNM Logo" height="50" class="me-3">
+                        <span class="small m-0">Copyright &copy; Your Website 2023</span>
+                    </div>
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- Projects JS -->
+        <script>
+            // Initialize AOS
+            AOS.init({
+                once: true,
+                offset: 100,
+                duration: 800,
+                easing: 'ease-in-out'
+            });
+
+            // Sample project data
+            const projects = [
+                {
+                    id: 1,
+                    title: "FitTrack Pro",
+                    category: "mobile",
+                    description: "Aplikasi fitness tracking dengan fitur workout planning, nutrisi tracking, dan progress monitoring",
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 2,
+                    title: "Kirana Mart",
+                    category: "web",
+                    description: "Platform e-commerce modern dengan fitur manajemen stok real-time, sistem pembayaran terintegrasi, dan dashboard analitik",
+                    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 3,
+                    title: "Smart Home Dashboard",
+                    category: "design",
+                    description: "Desain UI/UX untuk aplikasi kontrol smart home dengan fokus pada pengalaman pengguna yang intuitif",
+                    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 4,
+                    title: "GoFood Clone",
+                    category: "mobile",
+                    description: "Aplikasi delivery makanan dengan fitur pelacakan real-time, sistem rating, dan integrasi pembayaran",
+                    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 5,
+                    title: "Sistem Manajemen Sekolah",
+                    category: "web",
+                    description: "Platform manajemen sekolah dengan fitur absensi online, nilai akademik, dan komunikasi guru-orang tua",
+                    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 6,
+                    title: "Aplikasi Kesehatan Mental",
+                    category: "mobile",
+                    description: "Aplikasi kesehatan mental dengan fitur meditasi, jurnal harian, dan konseling online",
+                    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 7,
+                    title: "Learning Management System",
+                    category: "web",
+                    description: "Platform e-learning dengan fitur course management, progress tracking, dan interactive quizzes",
+                    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                },
+                {
+                    id: 8,
+                    title: "Finance Tracker",
+                    category: "mobile",
+                    description: "Aplikasi manajemen keuangan pribadi dengan fitur budget planning dan expense tracking",
+                    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                }
+            ];
+
+            const itemsPerPage = 6;
+            let currentPage = 1;
+
+            function createProjectCard(project, index) {
+                return `
+                    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                        <div class="card h-100 shadow-sm project-card">
+                            <div style="overflow: hidden;">
+                                <img src="${project.image}" class="card-img-top" alt="${project.title}">
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-overlay-content">
+                                    <h5>${project.title}</h5>
+                                    <p>${project.description}</p>
+                                    <button class="btn">Lihat Detail</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">${project.title}</h5>
+                                <p class="card-text">${project.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function displayProjects(category = 'all', page = 1) {
+                const filteredProjects = category === 'all' 
+                    ? projects 
+                    : projects.filter(project => project.category === category);
+
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const projectsToShow = filteredProjects.slice(startIndex, endIndex);
+
+                const containerId = category === 'all' ? 'allProjects' : `${category}Projects`;
+                const container = document.getElementById(containerId);
+                container.innerHTML = projectsToShow.map((project, index) => createProjectCard(project, index)).join('');
+
+                // Reinitialize AOS for new elements
+                AOS.refresh();
+
+                // Update pagination
+                updatePagination(filteredProjects.length, page);
+            }
+
+            function updatePagination(totalItems, currentPage) {
+                const totalPages = Math.ceil(totalItems / itemsPerPage);
+                const pagination = document.getElementById('projectPagination');
+                
+                let paginationHTML = '';
+                
+                // Previous button
+                paginationHTML += `
+                    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" data-page="${currentPage - 1}">Sebelumnya</a>
+                    </li>
+                `;
+
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHTML += `
+                        <li class="page-item ${currentPage === i ? 'active' : ''}">
+                            <a class="page-link" href="#" data-page="${i}">${i}</a>
+                        </li>
+                    `;
+                }
+
+                // Next button
+                paginationHTML += `
+                    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="#" data-page="${currentPage + 1}">Selanjutnya</a>
+                    </li>
+                `;
+
+                pagination.innerHTML = paginationHTML;
+
+                // Add click event listeners to pagination links
+                pagination.querySelectorAll('.page-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const page = parseInt(e.target.dataset.page);
+                        if (page && page !== currentPage) {
+                            currentPage = page;
+                            const activeTab = document.querySelector('.nav-link.active');
+                            const category = activeTab.id.split('-')[0];
+                            displayProjects(category, page);
+                        }
+                    });
+                });
+            }
+
+            // Initialize projects display
+            document.addEventListener('DOMContentLoaded', () => {
+                displayProjects('all', 1);
+
+                // Add tab change event listeners
+                document.querySelectorAll('.nav-link').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const category = e.target.id.split('-')[0];
+                        currentPage = 1;
+                        displayProjects(category, 1);
+                    });
+                });
+
+                // Add scroll animation for section title
+                const sectionTitle = document.querySelector('.display-5');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(sectionTitle);
+            });
+        </script>
+    </body>
+</html>
